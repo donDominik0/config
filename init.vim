@@ -4,9 +4,11 @@
 :set autoindent
 :set tabstop=4
 :set shiftwidth=4
-:set smarttab
+":set smarttab
+:set expandtab
 :set softtabstop=4
 :set mouse=a
+:set splitbelow
 
 call plug#begin(stdpath('data') . '/plugged')
 
@@ -19,7 +21,6 @@ Plug 'https://github.com/ap/vim-css-color' " CSS Color Preview
 Plug 'https://github.com/rafi/awesome-vim-colorschemes' " Retro Scheme
 Plug 'https://github.com/neoclide/coc.nvim'  " Auto Completion
 Plug 'https://github.com/ryanoasis/vim-devicons' " Developer Icons
-Plug 'https://github.com/tc50cal/vim-terminal' " Vim Terminal
 Plug 'https://github.com/preservim/tagbar' " Tagbar for code navigation
 Plug 'https://github.com/terryma/vim-multiple-cursors' " CTRL + N for multiple cursors
 
@@ -28,7 +29,11 @@ Plug 'https://github.com/vimwiki/vimwiki.git' " VimWiki
 Plug 'https://github.com/junegunn/goyo.vim.git' " Goyo
 Plug 'https://github.com/jiangmiao/auto-pairs.git' " Auto-pairs	
 
-Plug 'https://github.com/xuhdev/vim-latex-live-preview.git' " LaTeX
+" LaTeX
+Plug 'https://github.com/lervag/vimtex.git'
+Plug 'https://github.com/SirVer/ultisnips.git'
+
+"Plug 'https://github.com/xuhdev/vim-latex-live-preview.git' " LaTeX
 
 set encoding=UTF-8
 
@@ -39,6 +44,7 @@ nnoremap <C-f> :NERDTreeFocus<CR>
 nnoremap <C-n> :NERDTree<CR>
 nnoremap <C-t> :NERDTreeToggle<CR>
 nnoremap <C-l> :call CocActionAsync('jumpDefinition')<CR>
+nnoremap ŧ :sp \| terminal
 
 nmap <F8> :TagbarToggle<CR>
 
@@ -49,8 +55,9 @@ nmap <F8> :TagbarToggle<CR>
 let g:NERDTreeDirArrowExpandable="+"
 let g:NERDTreeDirArrowCollapsible="~"
 
-autocmd Filetype tex setl updatetime=1
-let g:livepreview_previewer = 'open -a Preview'
+"autocmd Filetype tex setl updatetime=1
+"let g:livepreview_previewer = 'open -a Preview'
 
-
-
+"LaTeX
+map ¢ :! pdflatex %<CR><CR>
+map þ :! mupdf %<.pdf & disown<CR><CR>
